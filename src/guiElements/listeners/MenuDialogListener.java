@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import guiElements.menubar.GameMenuDialogImpl;
 
-public class MenuActionListener implements ActionListener {
+public class MenuDialogListener implements ActionListener {
 	
 	GameMenuDialogImpl md;
 

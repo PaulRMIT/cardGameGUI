@@ -4,13 +4,18 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JMenuBar;
 
-import guiElements.listeners.MenuActionListener;
+import guiElements.frame.GameFrameImpl;
+import guiElements.listeners.ExitListener;
+import guiElements.listeners.MenuDialogListener;
 
 @SuppressWarnings("serial")
 public class GameMenuBarImpl extends JMenuBar {
 	
-	public GameMenuBarImpl() {
+	private GameFrameImpl frame;
+	
+	public GameMenuBarImpl(GameFrameImpl frame){
 		super();
+		this.frame = frame;
 		GameMenuImpl file = new GameMenuImpl("File", KeyEvent.VK_F);
 		GameMenuImpl players = new GameMenuImpl("Players", KeyEvent.VK_P);
 		GameMenuItemImpl exit = new GameMenuItemImpl("Exit", KeyEvent.VK_E);
@@ -23,7 +28,8 @@ public class GameMenuBarImpl extends JMenuBar {
 		players.add(removePlayer);
 		add(file);
 		add(players);
-		about.addActionListener(new MenuActionListener());
+		about.addActionListener(new MenuDialogListener());
+		exit.addActionListener(new ExitListener(frame));
 	}
 
 }
