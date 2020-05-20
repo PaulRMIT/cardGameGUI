@@ -2,12 +2,12 @@ package client;
 
 import java.awt.BorderLayout;
 
-import guiElements.frame.GameFrameImpl;
-import guiElements.handPanel.GameHandPanelImpl;
-import guiElements.menubar.GameMenuBarImpl;
-import guiElements.playersPanel.GamePlayersPanel;
-import guiElements.statusBar.GameStatusBar;
-import guiElements.toolBar.GameToolBar;
+import view.GameFrameImpl;
+import view.GameHandPanelImpl;
+import view.GameMenuBarImpl;
+import view.GamePlayersPanel;
+import view.GameStatusBar;
+import view.GameToolBar;
 
 public class GuiCardGame {
 	
