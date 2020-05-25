@@ -3,16 +3,13 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.GameMenuDialogImpl;
+import view.AboutDialogImpl;
 
-public class MenuDialogListener implements ActionListener {
+public abstract class MenuDialogListener implements ActionListener {
 	
-	GameMenuDialogImpl md;
+	
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		@SuppressWarnings("unused")
-		GameMenuDialogImpl md = new GameMenuDialogImpl("About");
-	}
+	public abstract void actionPerformed(ActionEvent e);
 
 }

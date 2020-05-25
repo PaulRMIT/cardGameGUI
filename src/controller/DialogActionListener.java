@@ -3,13 +3,13 @@ package controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import view.GameMenuDialogImpl;
+import view.AboutDialogImpl;
 
 public class DialogActionListener implements ActionListener {
 	
-	private GameMenuDialogImpl gmd;
+	private AboutDialogImpl gmd;
 	
-	public DialogActionListener(GameMenuDialogImpl gmd) {
+	public DialogActionListener(AboutDialogImpl gmd) {
 		
 		this.gmd = gmd;
 		

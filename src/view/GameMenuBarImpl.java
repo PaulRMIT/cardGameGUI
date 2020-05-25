@@ -4,6 +4,8 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JMenuBar;
 
+import controller.AboutDialogListener;
+import controller.AddPlayerListener;
 import controller.ExitListener;
 import controller.MenuDialogListener;
 
@@ -27,8 +29,9 @@ public class GameMenuBarImpl extends JMenuBar {
 		players.add(removePlayer);
 		add(file);
 		add(players);
-		about.addActionListener(new MenuDialogListener());
+		about.addActionListener(new AboutDialogListener());
 		exit.addActionListener(new ExitListener(frame));
+		addPlayer.addActionListener(new AddPlayerListener());
 	}
 
 }
