@@ -2,54 +2,39 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
 
-import controller.DialogActionListener;
+import controller.StorePlayerListener;
+import model.GameEngine;
+
 
 @SuppressWarnings("serial")
 public class AddPlayerDialog extends MenuDialog {
 	
-	private String name;
+	private InputPanel playerName;
+	private InputPanel id;
+	private InputPanel points;
 	
-	public AddPlayerDialog(String name) {
-		this.name = name;
+	
+	public AddPlayerDialog(String name, GameEngine ge) {
 		
 		setTitle(name);
 		JPanel contentPanel = new JPanel();
 		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 		
 		//name panel
-		JPanel playerName = new JPanel();
-		playerName.setLayout(new FlowLayout());
-		JLabel nameLabel = new JLabel("Name (max 20 ch): ");
-		JTextField nameField = new JTextField(20);
-		playerName.add(nameLabel);
-		playerName.add(nameField);
+		this.playerName = new InputPanel("Name: ", 20);
 		
 		//id panel
-		JPanel id = new JPanel();
-		id.setLayout(new FlowLayout());
-		JLabel idLabel = new JLabel("Id ( max 10 ch): ");
-		JTextField idField = new JTextField(10);
-		id.add(idLabel);
-		id.add(idField);
+		this.id = new InputPanel("Id ( max 10 ch): ", 10);
 		
 		//points panel
-		JPanel points = new JPanel();
-		id.setLayout(new FlowLayout());
-		JLabel pointsLabel = new JLabel("Points: ");
-		JTextField pointsField = new JTextField(10);
-		points.add(pointsLabel);
-		points.add(pointsField);
+		this.points = new InputPanel("Points: ", 10);
 		
 		contentPanel.add(playerName);
 		contentPanel.add(id);
@@ -63,12 +48,25 @@ public class AddPlayerDialog extends MenuDialog {
 		
 		JButton b = new JButton("OK");
 		buttonPanel.add(b);
+		b.addActionListener(new StorePlayerListener(this, ge));
 		
 		Container contentPane = getContentPane();
 		contentPane.add(contentPanel, BorderLayout.CENTER);
 		contentPane.add(buttonPanel, BorderLayout.PAGE_END);
-		setMinimumSize(new Dimension(400, 400));
+		pack();
 		setVisible(true);
+	}
+
+	public String getPlayerName() {
+		return playerName.getText();
+	}
+
+	public String getPlayerId() {
+		return id.getText();
+	}
+
+	public String getPoints() {
+		return points.getText();
 	}
 
 }

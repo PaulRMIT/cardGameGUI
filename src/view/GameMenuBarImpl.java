@@ -8,15 +8,19 @@ import controller.AboutDialogListener;
 import controller.AddPlayerListener;
 import controller.ExitListener;
 import controller.MenuDialogListener;
+import model.GameEngine;
 
 @SuppressWarnings("serial")
 public class GameMenuBarImpl extends JMenuBar {
 	
 	private GameFrameImpl frame;
+	private GameEngine ge;
 	
-	public GameMenuBarImpl(GameFrameImpl frame){
+	public GameMenuBarImpl(GameFrameImpl frame, GameEngine ge){
 		super();
 		this.frame = frame;
+		this.ge = ge;
+		
 		GameMenuImpl file = new GameMenuImpl("File", KeyEvent.VK_F);
 		GameMenuImpl players = new GameMenuImpl("Players", KeyEvent.VK_P);
 		GameMenuItemImpl exit = new GameMenuItemImpl("Exit", KeyEvent.VK_E);
@@ -31,7 +35,7 @@ public class GameMenuBarImpl extends JMenuBar {
 		add(players);
 		about.addActionListener(new AboutDialogListener());
 		exit.addActionListener(new ExitListener(frame));
-		addPlayer.addActionListener(new AddPlayerListener());
+		addPlayer.addActionListener(new AddPlayerListener(ge));
 	}
 
 }
